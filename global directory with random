@@ -1,0 +1,5 @@
+import random
+
+topics=set()
+while len(topics) != 10:
+	topics.add(random.choice(dir(globals()['__builtins__'])))
