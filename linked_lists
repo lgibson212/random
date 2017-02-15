@@ -1,0 +1,68 @@
+class Node:
+	def __init__(self, data, next):
+		self.data = data
+		self.next = next
+
+class LinkedList:
+	def __init__(self, node):
+		self.head = node
+		current1 = self.head
+
+	def insert(self, node):
+		current = self.head
+		if current == None:
+			self.head = node
+		while current:
+			if current.next == None:
+				current.next = node
+				break
+			current = current.next
+
+	def delete(self, data):
+		current = self.head
+		previous = None
+		while current:
+			if current.data == data and current.next != None:
+				current.data = current.next.data
+				current.next = current.next.next
+			elif current.data == data and current.next == None:
+				if current == self.head:
+					self.head = None
+					break
+				else:
+					previous.next = previous.next.next
+			previous = current
+			current = current.next
+
+	def search(self, data):
+		current = self.head 
+		data_exists = False
+		while current:
+			if current.data == data:
+				data_exists = True
+				return current
+			current = current.next
+		if data_exists == False:
+			return None
+
+
+	def print_forward(self):
+		current = self.head
+		while current:
+			print("|{}| -> ".format(current.data), end="")
+			current = current.next
+		print("None")
+
+	def print_backward(self):
+		print("None", end='')
+		self.pb()
+
+	def pb(self):
+		current = self.head
+		while current:
+			if current.next == None:
+				print("<- |{}|".format(current.data), end='')
+				self.delete(current.data)
+				self.print_backward()
+			current = current.next
+	
