@@ -13,6 +13,7 @@ class LinkedList:
 		if current == None:
 			self.head = node
 		while current:
+		#while used instead of for loop since there is an undefined number of nodes (we don't know how many)
 			if current.next == None:
 				current.next = node
 				break
@@ -23,9 +24,12 @@ class LinkedList:
 		previous = None
 		while current:
 			if current.data == data and current.next != None:
+			#if not last node in list
 				current.data = current.next.data
 				current.next = current.next.next
+				#move pointer to Next Node
 			elif current.data == data and current.next == None:
+			#if is last node in list
 				if current == self.head:
 					self.head = None
 					break
@@ -33,6 +37,8 @@ class LinkedList:
 					previous.next = previous.next.next
 			previous = current
 			current = current.next
+			#sets previous node to be next node, skipping over current
+
 
 	def search(self, data):
 		current = self.head 
@@ -50,7 +56,8 @@ class LinkedList:
 		current = self.head
 		while current:
 			print("|{}| -> ".format(current.data), end="")
-			current = current.next
+			#end prints it out on the same line
+			current = current.next 
 		print("None")
 
 	def print_backward(self):
@@ -58,11 +65,10 @@ class LinkedList:
 		self.pb()
 
 	def pb(self):
+		out = ""
 		current = self.head
 		while current:
-			if current.next == None:
-				print("<- |{}|".format(current.data), end='')
-				self.delete(current.data)
-				self.print_backward()
+			out = "|{}| <- ".format(str(current.data)) + out
 			current = current.next
+			print(out)
 	
