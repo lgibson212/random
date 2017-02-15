@@ -70,5 +70,5 @@ class LinkedList:
 		while current:
 			out = "|{}| <- ".format(str(current.data)) + out
 			current = current.next
-			print(out)
+		print(out)
 	
