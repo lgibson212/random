@@ -6,7 +6,7 @@ class Node:
 class LinkedList:
 	def __init__(self, node):
 		self.head = node
-		current1 = self.head
+		current = self.head
 
 	def insert(self, node):
 		current = self.head
@@ -71,4 +71,9 @@ class LinkedList:
 			out = "|{}| <- ".format(str(current.data)) + out
 			current = current.next
 		print(out)
-	
+
+		
+ll = LinkedList(Node(10, None))
+ll.insert(Node(20, None))
+ll.insert(Node(30, None))
+ll.insert(Node(40, None))
